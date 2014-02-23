@@ -1,0 +1,54 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: UserAgentContentSwitcher\n"
+"POT-Creation-Date: 2014-02-23 10:10+0900\n"
+"PO-Revision-Date: 2014-02-23 20:20+0900\n"
+"Last-Translator: Katsushi Kawamori <dodesyoswift312@gmail.com>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.6.4\n"
+"X-Poedit-KeywordsList: __;_e;gettext;gettext_noop\n"
+"X-Poedit-Basepath: .\n"
+"Language: ja\n"
+
+msgid "How to use"
+msgstr "使い方"
+
+msgid ""
+"Please add new Page. Please write a short code in the text field of the "
+"Page. Please go in Text mode this task."
+msgstr ""
+"ページを新規に追加します。本文欄に以下のショートコードを書きます。この作業は"
+"テキストモードで行ってください。"
+
+msgid "Please code the HTML for the PC here."
+msgstr "ここに、PC用のHTMLをコーディングします。"
+
+msgid "Please code the HTML for the Tablet here."
+msgstr "ここに、タブレット用のHTMLをコーディングします。"
+
+msgid "Please code the HTML for the Smartphone here."
+msgstr "ここに、スマートフォン用のHTMLをコーディングします。"
+
+msgid "Please code the HTML for the Japanese mobile phone here."
+msgstr "ここに、携帯用のHTMLをコーディングします。"
+
+msgid "The default value for User Agent."
+msgstr "ユーザーエージェントのデフォルト値"
+
+msgid "Short Code Attribute"
+msgstr "ショートコード属性値"
+
+msgid "for Tablet"
+msgstr "タブレット用"
+
+msgid "for Smartphone"
+msgstr "スマートフォン用"
+
+msgid "for Japanese mobile phone"
+msgstr "携帯用"
+
+msgid "| Specify separated by. Regular expression is possible."
+msgstr "| で区切って指定します。正規表現が可能です。"
