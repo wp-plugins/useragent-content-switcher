@@ -37,6 +37,7 @@ class UserAgentContentSwitcherAdmin {
 		$pluginurl = plugins_url($path='',$scheme=null);
 
 		wp_enqueue_style( 'jquery-ui-tabs', $pluginurl.'/useragent-content-switcher/css/jquery-ui.css' );
+		wp_enqueue_script( 'jquery' );
 		wp_enqueue_script( 'jquery-ui-tabs' );
 		wp_enqueue_script( 'jquery-ui-tabs-in', $pluginurl.'/useragent-content-switcher/js/jquery-ui-tabs-in.js' );
 		?>

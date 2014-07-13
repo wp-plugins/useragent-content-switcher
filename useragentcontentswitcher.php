@@ -2,7 +2,7 @@
 /*
 Plugin Name: UserAgent Content Switcher
 Plugin URI: http://wordpress.org/plugins/useragent-content-switcher/
-Version: 1.0
+Version: 1.1
 Description: Display the html written between the shortcode of each user agent.
 Author: Katsushi Kawamori
 Author URI: http://gallerylink.nyanko.org/
@@ -32,8 +32,6 @@ Domain Path: /languages
 	$useragentcontentswitcherregist = new UserAgentContentSwitcherRegist();
 	add_action('admin_init', array($useragentcontentswitcherregist, 'register_settings'));
 	unset($useragentcontentswitcherregist);
-
-	add_action( 'wp_head', wp_enqueue_script('jquery') );
 
 	require_once( dirname( __FILE__ ) . '/req/UserAgentContentSwitcherAdmin.php' );
 	$useragentcontentswitcheradmin = new UserAgentContentSwitcherAdmin();

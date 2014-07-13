@@ -4,7 +4,7 @@ Donate link: http://gallerylink.nyanko.org/
 Tags:  Browser, phone, platform, user agent, useragent, web, web browser
 Requires at least: 3.0.1
 Tested up to: 3.4
-Stable tag: 1.0
+Stable tag: 1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -61,9 +61,13 @@ none
 
 == Changelog ==
 
+= 1.1 =
+Fixed of problem of error in debug mode.
+
 = 1.0 =
 
 == Upgrade Notice ==
 
+= 1.1 =
 = 1.0 =
 
