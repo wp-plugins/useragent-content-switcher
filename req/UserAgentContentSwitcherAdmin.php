@@ -26,6 +26,25 @@ class UserAgentContentSwitcherAdmin {
 	}
 
 	/* ==================================================
+	 * Add Css and Script
+	 * @since	2.0
+	 */
+	function load_custom_wp_admin_style() {
+		wp_enqueue_style( 'jquery-responsiveTabs', USERAGENTCONTENTSWITCHER_PLUGIN_URL.'/css/responsive-tabs.css' );
+		wp_enqueue_style( 'jquery-responsiveTabs-style', USERAGENTCONTENTSWITCHER_PLUGIN_URL.'/css/style.css' );
+		wp_enqueue_script('jquery');
+		wp_enqueue_script( 'jquery-responsiveTabs', USERAGENTCONTENTSWITCHER_PLUGIN_URL.'/js/jquery.responsiveTabs.min.js' );
+	}
+
+	/* ==================================================
+	 * Add Script on footer
+	 * @since	2.0
+	 */
+	function load_custom_wp_admin_style2() {
+		echo $this->add_jscss();
+	}
+
+	/* ==================================================
 	 * Settings page
 	 * @since	1.0
 	 */
@@ -36,97 +55,107 @@ class UserAgentContentSwitcherAdmin {
 
 		$pluginurl = plugins_url($path='',$scheme=null);
 
-		wp_enqueue_style( 'jquery-ui-tabs', $pluginurl.'/useragent-content-switcher/css/jquery-ui.css' );
-		wp_enqueue_script( 'jquery' );
-		wp_enqueue_script( 'jquery-ui-tabs' );
-		wp_enqueue_script( 'jquery-ui-tabs-in', $pluginurl.'/useragent-content-switcher/js/jquery-ui-tabs-in.js' );
 		?>
 		<div class="wrap">
-		<div id="icon-options-general" class="icon32"><br /></div><h2>UserAgentContentSwitcher</h2>
-			<div id="tabs">
+			<h2>UserAgentContentSwitcher</h2>
+			<div id="useragentcontentswitcher-tabs">
 				<ul>
-				<li><a href="#tabs-1"><?php _e('How to use', 'useragentcontentswitcher'); ?></a></li>
-				<li><a href="#tabs-2"><?php _e('Settings'); ?></a></li>
+				<li><a href="#useragentcontentswitcher-tabs-1"><?php _e('How to use', 'useragentcontentswitcher'); ?></a></li>
+				<li><a href="#useragentcontentswitcher-tabs-2"><?php _e('Settings'); ?></a></li>
 				<!--
-				<li><a href="#tabs-3">FAQ</a></li>
+				<li><a href="#useragentcontentswitcher-tabs-3">FAQ</a></li>
 				 -->
 				</ul>
-				<div id="tabs-1">
-					<h2><?php _e('How to use', 'useragentcontentswitcher'); ?></h2>
-					<p><b><?php _e('Please add new Page. Please write a short code in the text field of the Page. Please go in Text mode this task.', 'useragentcontentswitcher'); ?></b></p>
-					<p>
-					<div>&#91;agentsw&#93</div>
-					<div><?php _e('Please code the HTML for the PC here.', 'useragentcontentswitcher'); ?></div>
-					<div>&#91;/agentsw&#93</div>
-					</p>
-					<p>
-					<div>&#91;agentsw ua='pc'&#93</div>
-					<div><?php _e('Please code the HTML for the PC here.', 'useragentcontentswitcher'); ?></div>
-					<div>&#91;/agentsw&#93</div>
-					</p>
-					<p>
-					<div>&#91;agentsw ua='tb'&#93</div>
-					<div><?php _e('Please code the HTML for the Tablet here.', 'useragentcontentswitcher'); ?></div>
-					<div>&#91;/agentsw&#93</div>
-					</p>
-					<p>
-					<div>&#91;agentsw ua='sp'&#93</div>
-					<div><?php _e('Please code the HTML for the Smartphone here.', 'useragentcontentswitcher'); ?></div>
-					<div>&#91;/agentsw&#93</div>
-					</p>
-					<p>
-					<div>&#91;agentsw ua='mb'&#93</div>
-					<div><?php _e('Please code the HTML for the Japanese mobile phone here.', 'useragentcontentswitcher'); ?></div>
-					<div>&#91;/agentsw&#93</div>
-					</p>
-				</div>
-
-				<div id="tabs-2">
+				<div id="useragentcontentswitcher-tabs-1">
 					<div class="wrap">
+
 					<form method="post" action="options.php">
+
 						<?php settings_fields('useragentcontentswitcher-settings-group'); ?>
 
-						<h2><?php _e('The default value for User Agent.', 'useragentcontentswitcher') ?></h2>	
-						<table border="1" bgcolor="#dddddd">
-						<tbody>
-							<tr>
-								<td align="center" valign="middle"><?php _e('Short Code Attribute', 'useragentcontentswitcher'); ?></td>
-								<td align="center" valign="middle"><?php _e('Default'); ?></td>
-								<td align="center" valign="middle" colspan="2"><?php _e('Description'); ?></td>
-							</tr>
-							<tr>
-								<td align="center" valign="middle">ua='tb'</td>
-								<td align="center" valign="middle">
-									<textarea id="useragentcontentswitcher_useragent_tb" name="useragentcontentswitcher_useragent_tb" rows="4" cols="120"><?php echo get_option('useragentcontentswitcher_useragent_tb') ?></textarea>
-								</td>
-								<td align="center" valign="middle"><?php _e('for Tablet', 'useragentcontentswitcher'); ?></td>
-								<td align="left" valign="middle" rowspan="3"><?php _e('| Specify separated by. Regular expression is possible.', 'useragentcontentswitcher'); ?></td>
-							</tr>
-							<tr>
-								<td align="center" valign="middle">ua='sp'</td>
-								<td align="center" valign="middle">
-									<textarea id="useragentcontentswitcher_useragent_sp" name="useragentcontentswitcher_useragent_sp" rows="4" cols="120"><?php echo get_option('useragentcontentswitcher_useragent_sp') ?></textarea>
-								</td>
-								<td align="center" valign="middle"><?php _e('for Smartphone', 'useragentcontentswitcher'); ?></td>
-							</tr>
-							<tr>
-								<td align="center" valign="middle">ua='mb'</td>
-								<td align="center" valign="middle">
-									<textarea id="useragentcontentswitcher_useragent_mb" name="useragentcontentswitcher_useragent_mb" rows="4" cols="120"><?php echo get_option('useragentcontentswitcher_useragent_mb') ?></textarea>
-								</td>
-								<td align="center" valign="middle"><?php _e('for Japanese mobile phone', 'useragentcontentswitcher'); ?></td>
-							</tr>
-						</tbody>
-						</table>
+						<h2><?php _e('Device Settings', 'useragentcontentswitcher') ?></h2>
+
+						<div style="padding:10px;border:#CCC 2px solid; margin:0 0 20px 0">
+							<div style="display:block"><?php _e('Tablet', 'useragentcontentswitcher'); ?></div>
+							<div style="display:block;padding:20px 0">
+							<?php _e('Short Code Attribute', 'useragentcontentswitcher'); ?><code>ua='tb'</code>
+							</div>
+							<div><?php _e('User Agent[Regular expression is possible.]', 'useragentcontentswitcher'); ?></div>
+							<div style="display:block">
+							<textarea id="useragentcontentswitcher_useragent_tb" name="useragentcontentswitcher_useragent_tb" rows="4" style="width: 100%;"><?php echo get_option('useragentcontentswitcher_useragent_tb') ?></textarea>
+							</div>
+							<div style="clear:both"></div>
+						</div>
+
+						<div style="padding:10px; border:#CCC 2px solid">
+							<div style="display:block"><?php _e('Smartphone', 'useragentcontentswitcher'); ?></div>
+							<div style="display:block;padding:20px 0">
+							<?php _e('Short Code Attribute', 'useragentcontentswitcher'); ?><code>ua='sp'</code>
+							</div>
+							<div><?php _e('User Agent[Regular expression is possible.]', 'useragentcontentswitcher'); ?></div>
+							<div style="display:block">
+							<textarea id="useragentcontentswitcher_useragent_sp" name="useragentcontentswitcher_useragent_sp" rows="4" style="width: 100%;"><?php echo get_option('useragentcontentswitcher_useragent_sp') ?></textarea>
+							</div>
+							<div style="clear:both"></div>
+						</div>
+
+						<div style="margin:20px 0; padding:10px; border:#CCC 2px solid">
+							<div style="display:block"><?php _e('Featurephone', 'useragentcontentswitcher'); ?></div>
+							<div style="display:block;padding:20px 0">
+							<?php _e('Short Code Attribute', 'useragentcontentswitcher'); ?><code>ua='mb'</code>
+							</div>
+							<div><?php _e('User Agent[Regular expression is possible.]', 'useragentcontentswitcher'); ?></div>
+							<div style="display:block">
+							<textarea id="useragentcontentswitcher_useragent_mb" name="useragentcontentswitcher_useragent_mb" rows="4" style="width: 100%;"><?php echo get_option('useragentcontentswitcher_useragent_mb') ?></textarea>
+							</div>
+							<div style="clear:both"></div>
+						</div>
+
+						<div style="clear:both"></div>
 
 						<p class="submit">
 							<input type="submit" name="Submit" value="<?php _e('Save Changes') ?>" />
 						</p>
+
 					</form>
+
 			  		</div>
 		  		</div>
+
+				<div id="useragentcontentswitcher-tabs-2">
+					<div class="wrap">
+						<h2><?php _e('How to use', 'useragentcontentswitcher'); ?></h2>
+						<div style="padding:10px;"><?php _e('Please add new Page. Please write a short code in the text field of the Page. Please go in Text mode this task.', 'useragentcontentswitcher'); ?></div>
+						<div style="padding:10px;">
+						<div><code>[agentsw]</code></div>
+						<div style="padding:10px;"><?php _e('Please code the HTML for the PC here.', 'useragentcontentswitcher'); ?></div>
+						<div><code>[/agentsw]</code></div>
+						</div>
+						<div style="padding:10px;">
+						<div><code>[agentsw ua='pc']</code></div>
+						<div style="padding:10px;"><?php _e('Please code the HTML for the PC here.', 'useragentcontentswitcher'); ?></div>
+						<div><code>[/agentsw]</code></div>
+						</div>
+						<div style="padding:10px;">
+						<div><code>[agentsw ua='tb']</code></div>
+						<div style="padding:10px;"><?php _e('Please code the HTML for the Tablet here.', 'useragentcontentswitcher'); ?></div>
+						<div><code>[/agentsw]</code></div>
+						</div>
+						<div style="padding:10px;">
+						<div><code>[agentsw ua='sp']</code></div>
+						<div style="padding:10px;"><?php _e('Please code the HTML for the Smartphone here.', 'useragentcontentswitcher'); ?></div>
+						<div><code>[/agentsw]</code></div>
+						</div>
+						<div style="padding:10px;">
+						<div><code>[agentsw ua='mb']</code></div>
+						<div style="padding:10px;"><?php _e('Please code the HTML for the Featurephone here.', 'useragentcontentswitcher'); ?></div>
+						<div><code>[/agentsw]</code></div>
+						</div>
+					</div>
+				</div>
+
 				<!--
-				<div id="tabs-3">
+				<div id="useragentcontentswitcher-tabs-3">
 					<div class="wrap">
 					<h2>FAQ</h2>
 					</div>
@@ -134,8 +163,32 @@ class UserAgentContentSwitcherAdmin {
 				-->
 			</div>
 		</div>
-		</div>
 		<?php
+	}
+
+	/* ==================================================
+	 * Add js css
+	 * @since	2.0
+	 */
+	function add_jscss(){
+
+// JS
+$useragentcontentswitcher_add_jscss = <<<USERAGENTCONTENTSWITCHER
+
+<!-- BEGIN: UserAgent Content Switcher -->
+<script type="text/javascript">
+	jQuery(document).ready(function () {
+		jQuery('#useragentcontentswitcher-tabs').responsiveTabs({
+			startCollapsed: 'accordion'
+		});
+	});
+</script>
+<!-- END: UserAgent Content Switcher -->
+
+USERAGENTCONTENTSWITCHER;
+
+		return $useragentcontentswitcher_add_jscss;
+
 	}
 
 }

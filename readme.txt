@@ -4,7 +4,7 @@ Donate link: http://gallerylink.nyanko.org/
 Tags:  Browser, phone, platform, user agent, useragent, web, web browser
 Requires at least: 3.0.1
 Tested up to: 3.4
-Stable tag: 1.1
+Stable tag: 2.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -48,7 +48,7 @@ Please code the HTML for the Smartphone here.
 [/agentsw]
 
 [agentsw ua='mb']
-Please code the HTML for the Japanese mobile phone here.
+Please code the HTML for the Featurephone here.
 [/agentsw]
 
 == Frequently Asked Questions ==
@@ -61,6 +61,9 @@ none
 
 == Changelog ==
 
+= 2.0 =
+Change management screen to responsive tab menu design.
+
 = 1.1 =
 Fixed of problem of error in debug mode.
 
@@ -68,6 +71,7 @@ Fixed of problem of error in debug mode.
 
 == Upgrade Notice ==
 
+= 2.0 =
 = 1.1 =
 = 1.0 =
 

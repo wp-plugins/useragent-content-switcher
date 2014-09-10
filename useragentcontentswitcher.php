@@ -2,7 +2,7 @@
 /*
 Plugin Name: UserAgent Content Switcher
 Plugin URI: http://wordpress.org/plugins/useragent-content-switcher/
-Version: 1.1
+Version: 2.0
 Description: Display the html written between the shortcode of each user agent.
 Author: Katsushi Kawamori
 Author URI: http://gallerylink.nyanko.org/
@@ -27,16 +27,20 @@ Domain Path: /languages
 	load_plugin_textdomain('useragentcontentswitcher', false, basename( dirname( __FILE__ ) ) . '/languages' );
 
 	define("USERAGENTCONTENTSWITCHER_PLUGIN_BASE_FILE", plugin_basename(__FILE__));
+	define("USERAGENTCONTENTSWITCHER_PLUGIN_BASE_DIR", dirname(__FILE__));
+	define("USERAGENTCONTENTSWITCHER_PLUGIN_URL", plugins_url($path='',$scheme=null).'/useragent-content-switcher');
 
-	require_once( dirname( __FILE__ ) . '/req/UserAgentContentSwitcherRegist.php' );
+	require_once( USERAGENTCONTENTSWITCHER_PLUGIN_BASE_DIR . '/req/UserAgentContentSwitcherRegist.php' );
 	$useragentcontentswitcherregist = new UserAgentContentSwitcherRegist();
 	add_action('admin_init', array($useragentcontentswitcherregist, 'register_settings'));
 	unset($useragentcontentswitcherregist);
 
-	require_once( dirname( __FILE__ ) . '/req/UserAgentContentSwitcherAdmin.php' );
+	require_once( USERAGENTCONTENTSWITCHER_PLUGIN_BASE_DIR . '/req/UserAgentContentSwitcherAdmin.php' );
 	$useragentcontentswitcheradmin = new UserAgentContentSwitcherAdmin();
 	add_action( 'admin_menu', array($useragentcontentswitcheradmin, 'plugin_menu'));
+	add_action( 'admin_enqueue_scripts', array($useragentcontentswitcheradmin, 'load_custom_wp_admin_style') );
 	add_filter( 'plugin_action_links', array($useragentcontentswitcheradmin, 'settings_link'), 10, 2 );
+	add_action( 'admin_footer', array($useragentcontentswitcheradmin, 'load_custom_wp_admin_style2') );
 	unset($useragentcontentswitcheradmin);
 
 	add_shortcode( 'agentsw', 'useragentcontentswitcher_func' );
