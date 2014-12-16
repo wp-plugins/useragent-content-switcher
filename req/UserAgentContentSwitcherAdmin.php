@@ -177,11 +177,9 @@ $useragentcontentswitcher_add_jscss = <<<USERAGENTCONTENTSWITCHER
 
 <!-- BEGIN: UserAgent Content Switcher -->
 <script type="text/javascript">
-	jQuery(document).ready(function () {
-		jQuery('#useragentcontentswitcher-tabs').responsiveTabs({
-			startCollapsed: 'accordion'
-		});
-	});
+jQuery('#useragentcontentswitcher-tabs').responsiveTabs({
+  startCollapsed: 'accordion'
+});
 </script>
 <!-- END: UserAgent Content Switcher -->
 
