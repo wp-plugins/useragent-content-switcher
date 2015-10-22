@@ -30,10 +30,12 @@ class UserAgentContentSwitcherAdmin {
 	 * @since	2.0
 	 */
 	function load_custom_wp_admin_style() {
-		wp_enqueue_style( 'jquery-responsiveTabs', USERAGENTCONTENTSWITCHER_PLUGIN_URL.'/css/responsive-tabs.css' );
-		wp_enqueue_style( 'jquery-responsiveTabs-style', USERAGENTCONTENTSWITCHER_PLUGIN_URL.'/css/style.css' );
-		wp_enqueue_script('jquery');
-		wp_enqueue_script( 'jquery-responsiveTabs', USERAGENTCONTENTSWITCHER_PLUGIN_URL.'/js/jquery.responsiveTabs.min.js' );
+		if ($this->is_my_plugin_screen()) {
+			wp_enqueue_style( 'jquery-responsiveTabs', USERAGENTCONTENTSWITCHER_PLUGIN_URL.'/css/responsive-tabs.css' );
+			wp_enqueue_style( 'jquery-responsiveTabs-style', USERAGENTCONTENTSWITCHER_PLUGIN_URL.'/css/style.css' );
+			wp_enqueue_script('jquery');
+			wp_enqueue_script( 'jquery-responsiveTabs', USERAGENTCONTENTSWITCHER_PLUGIN_URL.'/js/jquery.responsiveTabs.min.js' );
+		}
 	}
 
 	/* ==================================================
@@ -41,7 +43,22 @@ class UserAgentContentSwitcherAdmin {
 	 * @since	2.0
 	 */
 	function load_custom_wp_admin_style2() {
-		echo $this->add_jscss();
+		if ($this->is_my_plugin_screen()) {
+			echo $this->add_jscss();
+		}
+	}
+
+	/* ==================================================
+	 * For only admin style
+	 * @since	2.3
+	 */
+	function is_my_plugin_screen() {
+		$screen = get_current_screen();
+		if (is_object($screen) && $screen->id == 'settings_page_UserAgentContentSwitcher') {
+			return TRUE;
+		} else {
+			return FALSE;
+		}
 	}
 
 	/* ==================================================
@@ -114,9 +131,9 @@ class UserAgentContentSwitcherAdmin {
 
 						<div style="clear:both"></div>
 
-						<p class="submit">
-							<input type="submit" name="Submit" value="<?php _e('Save Changes') ?>" />
-						</p>
+						<div class="submit">
+							<input type="submit" name="Submit" class="button-primary button-large" value="<?php _e('Save Changes') ?>" />
+						</div>
 
 					</form>
 
@@ -157,10 +174,20 @@ class UserAgentContentSwitcherAdmin {
 
 				<div id="useragentcontentswitcher-tabs-3">
 				<div class="wrap">
-					<h3><?php _e('I need a donation. This is because, I want to continue the development and support of plugins.', 'useragentcontentswitcher'); ?></h3>
-					<div align="right">Katsushi Kawamori</div>
-					<h3 style="float: left;"><?php _e('Donate to this plugin &#187;'); ?></h3>
-		<a href='https://pledgie.com/campaigns/28307' target="_blank"><img alt='Click here to lend your support to: Various Plugins for WordPress and make a donation at pledgie.com !' src='https://pledgie.com/campaigns/28307.png?skin_name=chrome' border='0' ></a>
+					<?php
+					$plugin_datas = get_file_data( USERAGENTCONTENTSWITCHER_PLUGIN_BASE_DIR.'/useragentcontentswitcher.php', array('version' => 'Version') );
+					$plugin_version = __('Version:').' '.$plugin_datas['version'];
+					?>
+					<h4 style="margin: 5px; padding: 5px;">
+					<?php echo $plugin_version; ?> |
+					<a style="text-decoration: none;" href="https://wordpress.org/support/plugin/useragent-content-switcher" target="_blank"><?php _e('Support Forums') ?></a> |
+					<a style="text-decoration: none;" href="https://wordpress.org/support/view/plugin-reviews/useragent-content-switcher" target="_blank"><?php _e('Reviews', 'useragentcontentswitcher') ?></a>
+					</h4>
+					<div style="width: 250px; height: 170px; margin: 5px; padding: 5px; border: #CCC 2px solid;">
+					<h3><?php _e('Please make a donation if you like my work or would like to further the development of this plugin.', 'useragentcontentswitcher'); ?></h3>
+					<div style="text-align: right; margin: 5px; padding: 5px;"><span style="padding: 3px; color: #ffffff; background-color: #008000">Plugin Author</span> <span style="font-weight: bold;">Katsushi Kawamori</span></div>
+			<a style="margin: 5px; padding: 5px;" href='https://pledgie.com/campaigns/28307' target="_blank"><img alt='Click here to lend your support to: Various Plugins for WordPress and make a donation at pledgie.com !' src='https://pledgie.com/campaigns/28307.png?skin_name=chrome' border='0' ></a>
+					</div>
 				</div>
 				</div>
 

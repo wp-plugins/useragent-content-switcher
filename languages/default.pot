@@ -53,7 +53,8 @@ msgstr ""
 msgid "User Agent[Regular expression is possible.]"
 msgstr ""
 
-msgid ""
-"I need a donation. This is because, I want to continue the development and "
-"support of plugins."
+msgid "Please make a donation if you like my work or would like to further the development of this plugin."
+msgstr ""
+
+msgid "Reviews"
 msgstr ""

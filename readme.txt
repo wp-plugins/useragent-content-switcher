@@ -4,7 +4,7 @@ Donate link: http://pledgie.com/campaigns/28307
 Tags:  Browser, phone, platform, user agent, useragent, web, web browser
 Requires at least: 3.0.1
 Tested up to: 4.3
-Stable tag: 2.2
+Stable tag: 2.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -61,6 +61,9 @@ none
 
 == Changelog ==
 
+= 2.3 =
+Javascript and CSS will be loaded only to the required page.
+
 = 2.2 =
 Add screen of donate.
 Change readme.txt.
@@ -79,6 +82,7 @@ Fixed of problem of error in debug mode.
 
 == Upgrade Notice ==
 
+= 2.3 =
 = 2.2 =
 = 2.1 =
 = 2.0 =

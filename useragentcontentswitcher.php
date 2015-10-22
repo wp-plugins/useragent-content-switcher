@@ -2,7 +2,7 @@
 /*
 Plugin Name: UserAgent Content Switcher
 Plugin URI: http://wordpress.org/plugins/useragent-content-switcher/
-Version: 2.2
+Version: 2.3
 Description: Display the html written between the shortcode of each user agent.
 Author: Katsushi Kawamori
 Author URI: http://riverforest-wp.info/
